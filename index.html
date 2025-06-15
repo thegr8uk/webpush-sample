@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Push Notification App</title>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2196f3" />
   </head>
   <body>
     <button onclick="subscribe()">Subscribe</button>
-    <div id="subscription-info"></div>
+
     <script>
       async function subscribe() {
         let sw = await navigator.serviceWorker.ready;
@@ -18,7 +20,6 @@
             'BCCvCRLPbqoGZP5GprqoYYwV8k237ogHDWU663GYo_PM9sH9mA6nibK0cdaUUZXwz6aTXicrUvy8yRWXbxRG0Tw'
         });
         console.log(JSON.stringify(push));
-        document.getElementById('subscription-info').innerText = JSON.stringify(push);
       }
 
       if ('serviceWorker' in navigator) {

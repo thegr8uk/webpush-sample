@@ -11,11 +11,11 @@ push.setVapidDetails(
   vapidKeys.privateKey
 );
 
-let subscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/eRSLQ19eKEI:APA91bFhVUiTfHYYW5Fa-2xCF0z6dfoNc132bNskWmzt-wOVlbUukPoZdI15NOQW4jJXQvYaoFxYHdxi92AmviSnhaC-GiNsllvX_vCUvxDoqlfdTFeC7YFYRrpr60WA5CkocpidMDcF","expirationTime":null,"keys":{"p256dh":"BMzqVru4hyTFCFVMYngUCO78UmixKrBvVBxqKI4NiiN4GtgasUuRWcyuP5_OoeulmKT1eGVSNQIDZWb9L1sF-OA","auth":"FBcuXLRz2es68KQLPAIJWA"}};
+let subscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/c1nor_YwIVs:APA91bFRqTi-PJPDQ130OCzWFLgh3BqLwyu2HrhNUnbBM3oBJtl0bH8THg7YIrjol8TbfpbJiwbs70tLQOUEX2mWhl9rhF6GukWQxYIzWkTScSWXN2pkImKVABJrX7wBlNrAinUDY3th","expirationTime":null,"keys":{"p256dh":"BNHjiaG0N-FcXX8t0L94cByZAzV_yuufPcdh-o3QmKVp8LRmHKJs80RGLdxdamQR68dlsgSbif5noz2f1yIMJwc","auth":"hpkGP_1gW8zycloMUrlqjg"}};
 
 const payload = JSON.stringify({
-  title: 'Push from Backend',
-  body: 'Your push notification message here',
+  title: 'TT',
+  body: 'DOWN 2725 | nifty Scalping Strangle smooth Rider',
   url: 'https://yourdomain.com/page'
 });
 
