@@ -6,26 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Push Notification App</title>
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#2196f3" />
+    <meta name="theme-color" content="#282c34" />
+    <style>
+      body {
+        background-color: #282c34;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        border: none;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        background-color: grey;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      textarea {
+        width: 80%;
+        height: 200px;
+        resize: none;
+        font-family: monospace;
+        font-size: 14px;
+      }
+    </style>
   </head>
   <body>
-    <button onclick="subscribe()">Subscribe</button>
+    <button id="subBtn" onclick="subscribe()">Subscribe</button>
+    <textarea id="output" readonly placeholder="Subscription object will appear here..."></textarea>
 
     <script>
       async function subscribe() {
-        let sw = await navigator.serviceWorker.ready;
-        let push = await sw.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey:
-            'BCCvCRLPbqoGZP5GprqoYYwV8k237ogHDWU663GYo_PM9sH9mA6nibK0cdaUUZXwz6aTXicrUvy8yRWXbxRG0Tw'
-        });
-        console.log(JSON.stringify(push));
+        const btn = document.getElementById('subBtn');
+        const output = document.getElementById('output');
+        btn.innerText = 'Subscribing...';
+
+        try {
+          let sw = await navigator.serviceWorker.ready;
+          let push = await sw.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey:
+              'BCCvCRLPbqoGZP5GprqoYYwV8k237ogHDWU663GYo_PM9sH9mA6nibK0cdaUUZXwz6aTXicrUvy8yRWXbxRG0Tw'
+          });
+
+          const result = JSON.stringify(push, null, 2);
+          output.value = result;
+          btn.innerText = 'Subscribed';
+        } catch (e) {
+          output.value = 'Subscription failed: ' + e.message;
+          btn.innerText = 'Subscribe';
+        }
       }
 
       if ('serviceWorker' in navigator) {
         addEventListener('load', async () => {
-          let sw = await navigator.serviceWorker.register('./sw.js');
-          console.log(sw);
+          await navigator.serviceWorker.register('./sw.js');
         });
       }
     </script>

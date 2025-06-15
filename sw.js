@@ -32,7 +32,7 @@ self.addEventListener('push', (event) => {
     badge: 'icon.png',
     vibrate: [100, 50, 100],
     data: {
-      url: data.url || 'https://example.com'
+      url: data.url || 'https://kunkustox.online'
     }
   };
 
